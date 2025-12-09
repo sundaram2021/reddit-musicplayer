@@ -23,7 +23,7 @@ export function PlaylistView({ subreddit, sort, timeFrame, onSongSelect, selecte
   // Fetch posts from API
   const { data, isLoading, error } = useSWR(
     `/api/reddit/posts?subreddit=${subreddit}&sort=${sortBy}&time=${timeFrame}`,
-    async (url) => {
+    async (url: string) => {
       const res = await fetch(url)
       if (!res.ok) throw new Error("Failed to fetch posts")
       return res.json()
