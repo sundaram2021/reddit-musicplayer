@@ -112,9 +112,9 @@ export function AppContainer() {
   )
 
   return (
-    <div className="h-screen bg-background text-foreground flex overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground flex overflow-hidden">
       {/* Left Sidebar - Songs List */}
-      <div className="w-96 bg-secondary border-r border-border flex flex-col">
+      <div className="w-full md:w-96 bg-secondary border-r border-border flex flex-col">
         {/* Search Bar */}
         <div className="p-4 border-b border-border">
           <div className="relative">
@@ -146,6 +146,9 @@ export function AppContainer() {
                       ? "bg-accent text-accent-foreground"
                       : "hover:bg-muted"
                   }`}
+                  aria-label={`Play ${song.title} by ${song.author}`}
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="font-medium text-sm truncate">{song.title}</div>
                   <div className="text-xs text-muted-foreground truncate mt-1">{song.author}</div>
