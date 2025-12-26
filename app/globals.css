@@ -4,23 +4,24 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0f0f0f;
-  --foreground: #fafafa;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #fafafa;
-  --muted: #2a2a2a;
-  --muted-foreground: #a0a0a0;
-  --accent: #fbbf24;
-  --accent-foreground: #000000;
-  --border: #333333;
-  --input: #2a2a2a;
-  --ring: #fbbf24;
+  /* Vintage 80s-90s Record Player Theme */
+  --background: #2a1810;  /* Dark wood brown */
+  --foreground: #f5f1e8;  /* Off-white label color */
+  --secondary: #8b1f1f;  /* Deep red (suitcase color) */
+  --secondary-foreground: #f5f1e8;
+  --muted: #4a2820;  /* Muted dark wood */
+  --muted-foreground: #c9b8a8;  /* Warm beige */
+  --accent: #c0c0c0;  /* Chrome/silver accent */
+  --accent-foreground: #1a1a1a;
+  --border: #5a3825;  /* Wood trim */
+  --input: #3a2418;
+  --ring: #d4af37;  /* Gold ring */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: #8b1f1f;  /* Deep red */
+  --primary-foreground: #f5f1e8;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -28,7 +29,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
+  --radius: 0.375rem;  /* Slightly smaller radius for vintage look */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -37,37 +38,46 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Vintage-specific colors */
+  --vinyl-black: #1a1a1a;
+  --vinyl-label: #f5f1e8;
+  --chrome: #c0c0c0;
+  --gold: #d4af37;
+  --wood: #5a3825;
+  --red-suitcase: #8b1f1f;
 }
 
 .dark {
-  --background: #0f0f0f;
-  --foreground: #fafafa;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #fafafa;
-  --muted: #2a2a2a;
-  --muted-foreground: #a0a0a0;
-  --accent: #fbbf24;
-  --accent-foreground: #000000;
-  --border: #333333;
-  --input: #2a2a2a;
-  --ring: #fbbf24;
+  /* Vintage 80s-90s Record Player Theme (same for dark mode) */
+  --background: #2a1810;
+  --foreground: #f5f1e8;
+  --secondary: #8b1f1f;
+  --secondary-foreground: #f5f1e8;
+  --muted: #4a2820;
+  --muted-foreground: #c9b8a8;
+  --accent: #c0c0c0;
+  --accent-foreground: #1a1a1a;
+  --border: #5a3825;
+  --input: #3a2418;
+  --ring: #d4af37;
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --primary: #8b1f1f;
+  --primary-foreground: #f5f1e8;
+  --secondary: #8b1f1f;
+  --secondary-foreground: #f5f1e8;
+  --muted: #4a2820;
+  --muted-foreground: #c9b8a8;
+  --accent: #c0c0c0;
+  --accent-foreground: #1a1a1a;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --border: #5a3825;
+  --input: #3a2418;
+  --ring: #d4af37;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -81,6 +91,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  
+  /* Vintage-specific colors */
+  --vinyl-black: #1a1a1a;
+  --vinyl-label: #f5f1e8;
+  --chrome: #c0c0c0;
+  --gold: #d4af37;
+  --wood: #5a3825;
+  --red-suitcase: #8b1f1f;
 }
 
 @theme inline {
@@ -203,12 +221,48 @@
   }
 }
 
+@keyframes vinyl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tonearm-on {
+  from {
+    transform: rotate(-25deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes tonearm-off {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-25deg);
+  }
+}
+
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+.animate-vinyl {
+  animation: vinyl-spin 2s linear infinite;
+}
+
+.animate-tonearm-on {
+  animation: tonearm-on 0.5s ease-out forwards;
+}
+
+.animate-tonearm-off {
+  animation: tonearm-off 0.5s ease-out forwards;
 }
 
 /* Custom Scrollbar Styles */

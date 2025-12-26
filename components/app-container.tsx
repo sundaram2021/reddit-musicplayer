@@ -5,7 +5,7 @@ import { SubredditBrowser } from "./subreddit/subreddit-browser"
 import { PlaylistView } from "./playlist/playlist-view"
 import { NowPlayingCard } from "./player/now-playing-card"
 import { CommentsThread } from "./comments/comments-thread"
-import { AudioPlayer } from "./player/audio-player"
+import { VintageRecordPlayer } from "./player/vintage-record-player"
 import { SearchAndFilter } from "./playlist/search-and-filter"
 import { MiniPlayer } from "./now-playing/mini-player"
 import { Header } from "./layout/header"
@@ -38,6 +38,7 @@ export function AppContainer() {
   const [filters, setFilters] = useState<FilterOptions>({})
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [showMiniPlayer, setShowMiniPlayer] = useState(false)
+  const [playlist, setPlaylist] = useState<SongData[]>([])
 
   useEffect(() => {
     if (currentSong && isPlaying) {
@@ -61,6 +62,15 @@ export function AppContainer() {
     setCurrentSong(song)
     setIsPlaying(true)
     setShowMiniPlayer(true)
+    
+    // Add to playlist if not already there
+    setPlaylist((prev) => {
+      const exists = prev.find(s => s.id === song.id)
+      if (!exists) {
+        return [...prev, song]
+      }
+      return prev
+    })
   }, [])
 
   const handleFilter = useCallback((options: FilterOptions) => {
@@ -70,6 +80,29 @@ export function AppContainer() {
   const handleClearFilters = useCallback(() => {
     setFilters({})
   }, [])
+
+  const handleNext = useCallback(() => {
+    if (playlist.length === 0) return
+    const currentIndex = playlist.findIndex(s => s.id === currentSong?.id)
+    const nextIndex = (currentIndex + 1) % playlist.length
+    setCurrentSong(playlist[nextIndex])
+    setIsPlaying(true)
+  }, [playlist, currentSong])
+
+  const handlePrevious = useCallback(() => {
+    if (playlist.length === 0) return
+    const currentIndex = playlist.findIndex(s => s.id === currentSong?.id)
+    const prevIndex = currentIndex === 0 ? playlist.length - 1 : currentIndex - 1
+    setCurrentSong(playlist[prevIndex])
+    setIsPlaying(true)
+  }, [playlist, currentSong])
+
+  const handlePlaylistSongSelect = useCallback((index: number) => {
+    if (playlist[index]) {
+      setCurrentSong(playlist[index])
+      setIsPlaying(true)
+    }
+  }, [playlist])
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -157,7 +190,20 @@ export function AppContainer() {
 
       {/* Player Footer */}
       <footer className="bg-secondary border-t border-border sticky bottom-0 z-50">
-        {currentSong && <AudioPlayer videoId={currentSong.youtubeId} onEnded={() => setIsPlaying(false)} />}
+        <VintageRecordPlayer
+          videoId={currentSong?.youtubeId}
+          onEnded={() => {
+            setIsPlaying(false)
+            handleNext()
+          }}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          playlist={playlist}
+          currentSongIndex={playlist.findIndex(s => s.id === currentSong?.id)}
+          onSongSelect={handlePlaylistSongSelect}
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+        />
       </footer>
 
       {/* Mini Player */}
