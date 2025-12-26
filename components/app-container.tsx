@@ -33,145 +33,57 @@ const getAllMusicSubreddits = () => {
   return subreddits
 }
 
-// Mock data for demonstration when API fails
+// Mock data for demonstration when API fails - 100+ songs
 const getMockSongs = (): SongData[] => {
-  return [
-    {
-      id: "mock1",
-      title: "Tame Impala - The Less I Know The Better",
-      author: "TameImpalaMusic",
-      subreddit: "r/indieheads",
-      score: 4521,
-      youtubeId: "sBzrzS1Ag_g",
-      postUrl: "https://reddit.com/r/indieheads",
-    },
-    {
-      id: "mock2",
-      title: "Arctic Monkeys - Do I Wanna Know?",
-      author: "ArcticMonkeysVEVO",
-      subreddit: "r/indie_rock",
-      score: 3892,
-      youtubeId: "bpOSxM0rNPM",
-      postUrl: "https://reddit.com/r/indie_rock",
-    },
-    {
-      id: "mock3",
-      title: "Kendrick Lamar - HUMBLE.",
-      author: "KendrickLamarVEVO",
-      subreddit: "r/hiphopheads",
-      score: 5234,
-      youtubeId: "tvTRZJ-4EyI",
-      postUrl: "https://reddit.com/r/hiphopheads",
-    },
-    {
-      id: "mock4",
-      title: "Flume - Never Be Like You feat. Kai",
-      author: "FlumeAUS",
-      subreddit: "r/electronicmusic",
-      score: 2987,
-      youtubeId: "Ly7uj0JwgKg",
-      postUrl: "https://reddit.com/r/electronicmusic",
-    },
-    {
-      id: "mock5",
-      title: "ODESZA - A Moment Apart",
-      author: "ODESZA",
-      subreddit: "r/electronicmusic",
-      score: 3421,
-      youtubeId: "6t6Y-w-TT9Q",
-      postUrl: "https://reddit.com/r/electronicmusic",
-    },
-    {
-      id: "mock6",
-      title: "Mac DeMarco - Chamber of Reflection",
-      author: "MacDeMarcoVEVO",
-      subreddit: "r/listenothis",
-      score: 4123,
-      youtubeId: "NY8IS0ssnXQ",
-      postUrl: "https://reddit.com/r/listenothis",
-    },
-    {
-      id: "mock7",
-      title: "Anderson .Paak - Come Down",
-      author: "AndersonPaak",
-      subreddit: "r/hiphopheads",
-      score: 3654,
-      youtubeId: "ferZnZ0_rSM",
-      postUrl: "https://reddit.com/r/hiphopheads",
-    },
-    {
-      id: "mock8",
-      title: "Glass Animals - Heat Waves",
-      author: "GlassAnimalsVEVO",
-      subreddit: "r/indieheads",
-      score: 4890,
-      youtubeId: "mRD0-GxqHVo",
-      postUrl: "https://reddit.com/r/indieheads",
-    },
-    {
-      id: "mock9",
-      title: "The Strokes - Reptilia",
-      author: "TheStrokesVEVO",
-      subreddit: "r/indie_rock",
-      score: 5123,
-      youtubeId: "b8-tXG8KrWs",
-      postUrl: "https://reddit.com/r/indie_rock",
-    },
-    {
-      id: "mock10",
-      title: "Beach House - Space Song",
-      author: "BeachHouseBALT",
-      subreddit: "r/indieheads",
-      score: 3987,
-      youtubeId: "RBtlPT23PTM",
-      postUrl: "https://reddit.com/r/indieheads",
-    },
-    {
-      id: "mock11",
-      title: "Daft Punk - Get Lucky",
-      author: "DaftPunkVEVO",
-      subreddit: "r/electronicmusic",
-      score: 6543,
-      youtubeId: "5NV6Rdv1a3I",
-      postUrl: "https://reddit.com/r/electronicmusic",
-    },
-    {
-      id: "mock12",
-      title: "FKA twigs - Two Weeks",
-      author: "FKAtwigs",
-      subreddit: "r/popheads",
-      score: 2876,
-      youtubeId: "3yDP9MKVhZc",
-      postUrl: "https://reddit.com/r/popheads",
-    },
-    {
-      id: "mock13",
-      title: "Tyler, The Creator - EARFQUAKE",
-      author: "tylerthecreator",
-      subreddit: "r/hiphopheads",
-      score: 5432,
-      youtubeId: "HmAsUQEFYGI",
-      postUrl: "https://reddit.com/r/hiphopheads",
-    },
-    {
-      id: "mock14",
-      title: "MGMT - Electric Feel",
-      author: "MGMTVEVO",
-      subreddit: "r/indieheads",
-      score: 4234,
-      youtubeId: "MmZexg8sxyk",
-      postUrl: "https://reddit.com/r/indieheads",
-    },
-    {
-      id: "mock15",
-      title: "Bon Iver - Holocene",
-      author: "boniver",
-      subreddit: "r/indieheads",
-      score: 3765,
-      youtubeId: "TWcyIpul8OE",
-      postUrl: "https://reddit.com/r/indieheads",
-    },
+  const songs: SongData[] = [
+    { id: "mock1", title: "Tame Impala - The Less I Know The Better", author: "TameImpalaMusic", subreddit: "r/indieheads", score: 4521, youtubeId: "sBzrzS1Ag_g", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock2", title: "Arctic Monkeys - Do I Wanna Know?", author: "ArcticMonkeysVEVO", subreddit: "r/indie_rock", score: 3892, youtubeId: "bpOSxM0rNPM", postUrl: "https://reddit.com/r/indie_rock" },
+    { id: "mock3", title: "Kendrick Lamar - HUMBLE.", author: "KendrickLamarVEVO", subreddit: "r/hiphopheads", score: 5234, youtubeId: "tvTRZJ-4EyI", postUrl: "https://reddit.com/r/hiphopheads" },
+    { id: "mock4", title: "Flume - Never Be Like You feat. Kai", author: "FlumeAUS", subreddit: "r/electronicmusic", score: 2987, youtubeId: "Ly7uj0JwgKg", postUrl: "https://reddit.com/r/electronicmusic" },
+    { id: "mock5", title: "ODESZA - A Moment Apart", author: "ODESZA", subreddit: "r/electronicmusic", score: 3421, youtubeId: "6t6Y-w-TT9Q", postUrl: "https://reddit.com/r/electronicmusic" },
+    { id: "mock6", title: "Mac DeMarco - Chamber of Reflection", author: "MacDeMarcoVEVO", subreddit: "r/listenothis", score: 4123, youtubeId: "NY8IS0ssnXQ", postUrl: "https://reddit.com/r/listenothis" },
+    { id: "mock7", title: "Anderson .Paak - Come Down", author: "AndersonPaak", subreddit: "r/hiphopheads", score: 3654, youtubeId: "ferZnZ0_rSM", postUrl: "https://reddit.com/r/hiphopheads" },
+    { id: "mock8", title: "Glass Animals - Heat Waves", author: "GlassAnimalsVEVO", subreddit: "r/indieheads", score: 4890, youtubeId: "mRD0-GxqHVo", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock9", title: "The Strokes - Reptilia", author: "TheStrokesVEVO", subreddit: "r/indie_rock", score: 5123, youtubeId: "b8-tXG8KrWs", postUrl: "https://reddit.com/r/indie_rock" },
+    { id: "mock10", title: "Beach House - Space Song", author: "BeachHouseBALT", subreddit: "r/indieheads", score: 3987, youtubeId: "RBtlPT23PTM", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock11", title: "Daft Punk - Get Lucky", author: "DaftPunkVEVO", subreddit: "r/electronicmusic", score: 6543, youtubeId: "5NV6Rdv1a3I", postUrl: "https://reddit.com/r/electronicmusic" },
+    { id: "mock12", title: "FKA twigs - Two Weeks", author: "FKAtwigs", subreddit: "r/popheads", score: 2876, youtubeId: "3yDP9MKVhZc", postUrl: "https://reddit.com/r/popheads" },
+    { id: "mock13", title: "Tyler, The Creator - EARFQUAKE", author: "tylerthecreator", subreddit: "r/hiphopheads", score: 5432, youtubeId: "HmAsUQEFYGI", postUrl: "https://reddit.com/r/hiphopheads" },
+    { id: "mock14", title: "MGMT - Electric Feel", author: "MGMTVEVO", subreddit: "r/indieheads", score: 4234, youtubeId: "MmZexg8sxyk", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock15", title: "Bon Iver - Holocene", author: "boniver", subreddit: "r/indieheads", score: 3765, youtubeId: "TWcyIpul8OE", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock16", title: "Alt-J - Breezeblocks", author: "AltJVEVO", subreddit: "r/indieheads", score: 4421, youtubeId: "rVeMiVU77wo", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock17", title: "Childish Gambino - Redbone", author: "ChildishGambinoVEVO", subreddit: "r/hiphopheads", score: 5621, youtubeId: "Kp7eSUU9oy8", postUrl: "https://reddit.com/r/hiphopheads" },
+    { id: "mock18", title: "Portugal. The Man - Feel It Still", author: "PortugalTheMan", subreddit: "r/indieheads", score: 3921, youtubeId: "pBkHHoOIIn8", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock19", title: "The Weeknd - Blinding Lights", author: "TheWeekndVEVO", subreddit: "r/popheads", score: 7234, youtubeId: "4NRXx6U8ABQ", postUrl: "https://reddit.com/r/popheads" },
+    { id: "mock20", title: "Billie Eilish - bad guy", author: "BillieEilishVEVO", subreddit: "r/popheads", score: 6821, youtubeId: "DyDfgMOUjCI", postUrl: "https://reddit.com/r/popheads" },
+    { id: "mock21", title: "Gorillaz - Feel Good Inc.", author: "GorilladVEVO", subreddit: "r/electronicmusic", score: 5987, youtubeId: "HyHNuVaZJ-k", postUrl: "https://reddit.com/r/electronicmusic" },
+    { id: "mock22", title: "Toro y Moi - Ordinary Pleasure", author: "ToroYMoi", subreddit: "r/indieheads", score: 2987, youtubeId: "x6oYJJRaxoU", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock23", title: "Frank Ocean - Nights", author: "FrankOcean", subreddit: "r/hiphopheads", score: 6234, youtubeId: "r4l9bFqgMaQ", postUrl: "https://reddit.com/r/hiphopheads" },
+    { id: "mock24", title: "Radiohead - Paranoid Android", author: "Radiohead", subreddit: "r/indie_rock", score: 5432, youtubeId: "fHiGbolFFGw", postUrl: "https://reddit.com/r/indie_rock" },
+    { id: "mock25", title: "LCD Soundsystem - Dance Yrself Clean", author: "LCDSoundsystem", subreddit: "r/electronicmusic", score: 4876, youtubeId: "OoA0cTC228M", postUrl: "https://reddit.com/r/electronicmusic" },
+    { id: "mock26", title: "M83 - Midnight City", author: "M83VEVO", subreddit: "r/electronicmusic", score: 5234, youtubeId: "dX3k_QDnzHE", postUrl: "https://reddit.com/r/electronicmusic" },
+    { id: "mock27", title: "Phoenix - 1901", author: "PhoenixVEVO", subreddit: "r/indieheads", score: 4123, youtubeId: "HL548cHH3OY", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock28", title: "Two Door Cinema Club - What You Know", author: "TwoDoorCinemaClub", subreddit: "r/indieheads", score: 3876, youtubeId: "YXwYJyrKK5A", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock29", title: "Foster The People - Pumped Up Kicks", author: "FosterThePeopleVEVO", subreddit: "r/indieheads", score: 4987, youtubeId: "SDTZ7iX4vTQ", postUrl: "https://reddit.com/r/indieheads" },
+    { id: "mock30", title: "CHVRCHES - The Mother We Share", author: "CHVRCHES", subreddit: "r/electronicmusic", score: 3654, youtubeId: "_mTRvJ9fugM", postUrl: "https://reddit.com/r/electronicmusic" },
   ]
+  
+  // Add 70 more songs by duplicating and modifying
+  for (let i = 31; i <= 100; i++) {
+    const baseIndex = (i - 31) % 30
+    const baseSong = songs[baseIndex]
+    songs.push({
+      id: `mock${i}`,
+      title: `${baseSong.title} (Live)`,
+      author: baseSong.author,
+      subreddit: baseSong.subreddit,
+      score: baseSong.score - Math.floor(Math.random() * 1000),
+      youtubeId: baseSong.youtubeId,
+      postUrl: baseSong.postUrl,
+    })
+  }
+  
+  return songs
 }
 
 export function AppContainer() {
@@ -298,11 +210,11 @@ export function AppContainer() {
   )
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex overflow-hidden">
+    <div className="h-screen bg-background text-foreground flex overflow-hidden">
       {/* Left Sidebar - Songs List */}
-      <div className="w-full md:w-96 bg-secondary border-r border-border flex flex-col">
+      <div className="w-full md:w-96 bg-secondary border-r border-border flex flex-col h-screen">
         {/* Search Bar */}
-        <div className="p-4 border-b border-border">
+        <div className="p-4 border-b border-border flex-shrink-0">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -316,7 +228,7 @@ export function AppContainer() {
         </div>
 
         {/* Songs List */}
-        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-secondary">
+        <div className="flex-1 overflow-y-auto">
           {isLoading ? (
             <div className="p-4 text-center text-muted-foreground">Loading songs...</div>
           ) : filteredSongs.length === 0 ? (
@@ -348,7 +260,7 @@ export function AppContainer() {
       </div>
 
       {/* Right Side - Vintage Record Player */}
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex flex-col items-center justify-center p-8 h-screen overflow-hidden">
         <div className="w-full max-w-3xl">
           <VintageRecordPlayer
             videoId={currentSong?.youtubeId}
