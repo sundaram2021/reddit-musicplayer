@@ -4,24 +4,24 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Vintage 80s-90s Record Player Theme */
-  --background: #2a1810;  /* Dark wood brown */
-  --foreground: #f5f1e8;  /* Off-white label color */
-  --secondary: #8b1f1f;  /* Deep red (suitcase color) */
-  --secondary-foreground: #f5f1e8;
-  --muted: #4a2820;  /* Muted dark wood */
-  --muted-foreground: #c9b8a8;  /* Warm beige */
-  --accent: #c0c0c0;  /* Chrome/silver accent */
-  --accent-foreground: #1a1a1a;
-  --border: #5a3825;  /* Wood trim */
-  --input: #3a2418;
-  --ring: #d4af37;  /* Gold ring */
+  /* Chocolatey Greyish Dark Theme */
+  --background: #1a1514;  /* Dark chocolate brown */
+  --foreground: #e8e3df;  /* Light cream */
+  --secondary: #2d2421;  /* Medium chocolate */
+  --secondary-foreground: #e8e3df;
+  --muted: #3a332e;  /* Muted brown-grey */
+  --muted-foreground: #a39b94;  /* Grey-brown */
+  --accent: #8b7d6b;  /* Taupe accent */
+  --accent-foreground: #1a1514;
+  --border: #4a423c;  /* Dark grey-brown border */
+  --input: #2d2421;
+  --ring: #8b7d6b;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #8b1f1f;  /* Deep red */
-  --primary-foreground: #f5f1e8;
+  --primary: #2d2421;
+  --primary-foreground: #e8e3df;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -29,7 +29,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.375rem;  /* Slightly smaller radius for vintage look */
+  --radius: 0.375rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -39,46 +39,46 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   
-  /* Vintage-specific colors */
+  /* Vintage-specific colors - chocolatey theme */
   --vinyl-black: #1a1a1a;
-  --vinyl-label: #f5f1e8;
-  --chrome: #c0c0c0;
-  --gold: #d4af37;
-  --wood: #5a3825;
-  --red-suitcase: #8b1f1f;
+  --vinyl-label: #e8e3df;
+  --chrome: #9a8d7f;  /* Brownish chrome */
+  --gold: #c9a875;  /* Muted gold */
+  --wood: #4a423c;  /* Dark wood grey */
+  --player-bg: #3a332e;  /* Player background */
   --vinyl-gradient: radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%);
 }
 
 .dark {
-  /* Vintage 80s-90s Record Player Theme (same for dark mode) */
-  --background: #2a1810;
-  --foreground: #f5f1e8;
-  --secondary: #8b1f1f;
-  --secondary-foreground: #f5f1e8;
-  --muted: #4a2820;
-  --muted-foreground: #c9b8a8;
-  --accent: #c0c0c0;
-  --accent-foreground: #1a1a1a;
-  --border: #5a3825;
-  --input: #3a2418;
-  --ring: #d4af37;
+  /* Chocolatey Greyish Dark Theme (same for dark mode) */
+  --background: #1a1514;
+  --foreground: #e8e3df;
+  --secondary: #2d2421;
+  --secondary-foreground: #e8e3df;
+  --muted: #3a332e;
+  --muted-foreground: #a39b94;
+  --accent: #8b7d6b;
+  --accent-foreground: #1a1514;
+  --border: #4a423c;
+  --input: #2d2421;
+  --ring: #8b7d6b;
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: #8b1f1f;
-  --primary-foreground: #f5f1e8;
-  --secondary: #8b1f1f;
-  --secondary-foreground: #f5f1e8;
-  --muted: #4a2820;
-  --muted-foreground: #c9b8a8;
-  --accent: #c0c0c0;
-  --accent-foreground: #1a1a1a;
+  --primary: #2d2421;
+  --primary-foreground: #e8e3df;
+  --secondary: #2d2421;
+  --secondary-foreground: #e8e3df;
+  --muted: #3a332e;
+  --muted-foreground: #a39b94;
+  --accent: #8b7d6b;
+  --accent-foreground: #1a1514;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: #5a3825;
-  --input: #3a2418;
-  --ring: #d4af37;
+  --border: #4a423c;
+  --input: #2d2421;
+  --ring: #8b7d6b;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -93,13 +93,13 @@
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
   
-  /* Vintage-specific colors */
+  /* Vintage-specific colors - chocolatey theme */
   --vinyl-black: #1a1a1a;
-  --vinyl-label: #f5f1e8;
-  --chrome: #c0c0c0;
-  --gold: #d4af37;
-  --wood: #5a3825;
-  --red-suitcase: #8b1f1f;
+  --vinyl-label: #e8e3df;
+  --chrome: #9a8d7f;
+  --gold: #c9a875;
+  --wood: #4a423c;
+  --player-bg: #3a332e;
   --vinyl-gradient: radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%);
 }
 

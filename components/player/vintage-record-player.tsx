@@ -4,13 +4,6 @@ import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { SkipBack, Play, Pause, SkipForward, Volume2 } from "lucide-react"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
 interface VintageRecordPlayerProps {
   videoId?: string
@@ -170,20 +163,13 @@ export function VintageRecordPlayer({
     return `${minutes}:${secs.toString().padStart(2, "0")}`
   }
 
-  const handleSongChange = (value: string) => {
-    const index = parseInt(value, 10)
-    if (onSongSelect) {
-      onSongSelect(index)
-    }
-  }
-
   return (
     <div className="w-full relative" ref={containerRef}>
       {/* Hidden YouTube Player */}
       <div id="youtube-player-vintage" style={{ display: "none" }} />
 
       {/* Vintage Record Player UI */}
-      <div className="bg-[var(--red-suitcase)] rounded-lg shadow-2xl p-6 border-4 border-[var(--wood)]">
+      <div className="bg-[var(--player-bg)] rounded-lg shadow-2xl p-6 border-4 border-[var(--wood)]">
         {/* Top Section: Record and Tonearm */}
         <div className="flex items-center justify-center mb-6 relative">
           {/* Vinyl Record */}
@@ -221,29 +207,6 @@ export function VintageRecordPlayer({
           </div>
         </div>
 
-        {/* Song Selector */}
-        {playlist.length > 0 && (
-          <div className="mb-4">
-            <div className="flex items-center gap-2 bg-[var(--wood)] p-3 rounded border-2 border-[var(--gold)]">
-              <span className="text-[var(--vinyl-label)] text-xs font-medium whitespace-nowrap">
-                SELECT SONG:
-              </span>
-              <Select value={currentSongIndex.toString()} onValueChange={handleSongChange}>
-                <SelectTrigger className="flex-1 bg-[var(--vinyl-label)] text-[var(--vinyl-black)] border-[var(--chrome)] h-8">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-[var(--vinyl-label)] text-[var(--vinyl-black)]">
-                  {playlist.map((song, index) => (
-                    <SelectItem key={song.id} value={index.toString()}>
-                      {song.title} - {song.author}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        )}
-
         {/* Progress Bar */}
         <div className="mb-4 bg-[var(--wood)] p-3 rounded border-2 border-[var(--gold)]">
           <div className="flex items-center gap-2">
@@ -278,7 +241,7 @@ export function VintageRecordPlayer({
             </Button>
             <Button
               size="lg"
-              className="h-16 w-16 rounded-full bg-[var(--red-suitcase)] hover:bg-[#a02828] text-[var(--vinyl-label)] shadow-xl border-4 border-[var(--gold)]"
+              className="h-16 w-16 rounded-full bg-[var(--accent)] hover:bg-[var(--chrome)] text-[var(--vinyl-label)] shadow-xl border-4 border-[var(--gold)]"
               onClick={handlePlayPause}
               disabled={!videoId}
             >
