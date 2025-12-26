@@ -46,6 +46,7 @@
   --gold: #d4af37;
   --wood: #5a3825;
   --red-suitcase: #8b1f1f;
+  --vinyl-gradient: radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%);
 }
 
 .dark {
@@ -99,6 +100,7 @@
   --gold: #d4af37;
   --wood: #5a3825;
   --red-suitcase: #8b1f1f;
+  --vinyl-gradient: radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%);
 }
 
 @theme inline {

@@ -194,7 +194,9 @@ export function AppContainer() {
           videoId={currentSong?.youtubeId}
           onEnded={() => {
             setIsPlaying(false)
-            handleNext()
+            if (playlist.length > 0) {
+              handleNext()
+            }
           }}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}

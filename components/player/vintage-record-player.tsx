@@ -97,7 +97,7 @@ export function VintageRecordPlayer({
     })
   }
 
-  const onPlayerReady = (event: any) => {
+  const onPlayerReady = (event: { target: any }) => {
     setDuration(event.target.getDuration())
     event.target.setVolume(volume * 100)
     event.target.playVideo()
@@ -106,7 +106,7 @@ export function VintageRecordPlayer({
     startTimeUpdate()
   }
 
-  const onPlayerStateChange = (event: any) => {
+  const onPlayerStateChange = (event: { target: any; data: number }) => {
     if (event.data === window.YT?.PlayerState.PLAYING) {
       setIsPlaying(true)
       onPlay?.()
@@ -193,7 +193,7 @@ export function VintageRecordPlayer({
                 isPlaying ? "animate-vinyl" : ""
               }`}
               style={{
-                background: "radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%)",
+                background: "var(--vinyl-gradient)",
               }}
             >
               {/* Center Label */}
