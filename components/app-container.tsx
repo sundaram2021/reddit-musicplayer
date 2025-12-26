@@ -1,11 +1,11 @@
 "use client"
 
 import { useState, useCallback, useEffect } from "react"
-import useSWR from "swr"
 import { VintageRecordPlayer } from "./player/vintage-record-player"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import { extractYouTubeId } from "@/lib/reddit-client"
+import { REDDIT_SUBREDDITS } from "@/lib/reddit-subreddits"
 
 interface SongData {
   id: string
@@ -18,53 +18,90 @@ interface SongData {
   postUrl?: string
 }
 
+// Get all music subreddits from all categories (excluding "Favorite")
+const getAllMusicSubreddits = () => {
+  const subreddits: string[] = []
+  Object.entries(REDDIT_SUBREDDITS).forEach(([category, subs]) => {
+    if (category !== "Favorite") {
+      subs.forEach((sub) => {
+        if (sub.path.startsWith("r/")) {
+          subreddits.push(sub.path)
+        }
+      })
+    }
+  })
+  return subreddits
+}
+
 export function AppContainer() {
-  const [selectedSubreddit, setSelectedSubreddit] = useState("r/listenothis")
   const [currentSong, setCurrentSong] = useState<SongData | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [playlist, setPlaylist] = useState<SongData[]>([])
   const [searchQuery, setSearchQuery] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Fetch posts from API
-  const { data, isLoading } = useSWR(
-    `/api/reddit/posts?subreddit=${selectedSubreddit}&sort=hot&time=week`,
-    async (url: string) => {
-      const res = await fetch(url)
-      if (!res.ok) throw new Error("Failed to fetch posts")
-      return res.json()
-    },
-    { revalidateOnFocus: false }
-  )
-
-  // Process Reddit posts into songs
+  // Fetch posts from multiple subreddits
   useEffect(() => {
-    if (!data?.posts) {
-      setPlaylist([])
-      return
+    const fetchAllSongs = async () => {
+      setIsLoading(true)
+      const allSongs: SongData[] = []
+      const subreddits = getAllMusicSubreddits()
+      
+      // Fetch from first 10 subreddits to avoid too many API calls
+      const subredditsToFetch = subreddits.slice(0, 10)
+      
+      try {
+        const promises = subredditsToFetch.map(async (subreddit) => {
+          try {
+            const res = await fetch(`/api/reddit/posts?subreddit=${subreddit}&sort=hot&time=week`)
+            if (!res.ok) return []
+            const data = await res.json()
+            
+            if (!data?.posts) return []
+            
+            return data.posts
+              .filter((post: any) => {
+                const hasYoutube = /youtube|youtu\.be/.test(post.url)
+                return hasYoutube && post.title
+              })
+              .map((post: any) => {
+                const youtubeId = extractYouTubeId(post.url)
+                return {
+                  id: post.id,
+                  title: post.title,
+                  author: post.author,
+                  subreddit: post.subreddit_name_prefixed,
+                  score: post.score,
+                  image: post.thumbnail && post.thumbnail !== "self" ? post.thumbnail : undefined,
+                  youtubeId,
+                  postUrl: `https://reddit.com${post.permalink}`,
+                }
+              })
+              .filter((song: SongData) => song.youtubeId)
+          } catch (error) {
+            console.error(`Error fetching from ${subreddit}:`, error)
+            return []
+          }
+        })
+        
+        const results = await Promise.all(promises)
+        results.forEach((songs) => {
+          allSongs.push(...songs)
+        })
+        
+        // Sort by score (popularity)
+        allSongs.sort((a, b) => b.score - a.score)
+        
+        setPlaylist(allSongs)
+      } catch (error) {
+        console.error("Error fetching songs:", error)
+      } finally {
+        setIsLoading(false)
+      }
     }
 
-    const songs = data.posts
-      .filter((post: any) => {
-        const hasYoutube = /youtube|youtu\.be/.test(post.url)
-        return hasYoutube && post.title
-      })
-      .map((post: any) => {
-        const youtubeId = extractYouTubeId(post.url)
-        return {
-          id: post.id,
-          title: post.title,
-          author: post.author,
-          subreddit: post.subreddit_name_prefixed,
-          score: post.score,
-          image: post.thumbnail && post.thumbnail !== "self" ? post.thumbnail : undefined,
-          youtubeId,
-          postUrl: `https://reddit.com${post.permalink}`,
-        }
-      })
-      .filter((song: SongData) => song.youtubeId)
-
-    setPlaylist(songs)
-  }, [data])
+    fetchAllSongs()
+  }, [])
 
   useEffect(() => {
     if (currentSong && isPlaying) {
@@ -108,7 +145,8 @@ export function AppContainer() {
   // Filter songs based on search
   const filteredSongs = playlist.filter((song) =>
     song.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    song.author.toLowerCase().includes(searchQuery.toLowerCase())
+    song.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    song.subreddit.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
   return (
@@ -151,7 +189,9 @@ export function AppContainer() {
                   tabIndex={0}
                 >
                   <div className="font-medium text-sm truncate">{song.title}</div>
-                  <div className="text-xs text-muted-foreground truncate mt-1">{song.author}</div>
+                  <div className="text-xs text-muted-foreground truncate mt-1">
+                    {song.author} • {song.subreddit}
+                  </div>
                 </button>
               ))}
             </div>
