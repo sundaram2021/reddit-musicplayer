@@ -4,23 +4,24 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0f0f0f;
-  --foreground: #fafafa;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #fafafa;
-  --muted: #2a2a2a;
-  --muted-foreground: #a0a0a0;
-  --accent: #fbbf24;
-  --accent-foreground: #000000;
-  --border: #333333;
-  --input: #2a2a2a;
-  --ring: #fbbf24;
+  /* Chocolatey Greyish Dark Theme */
+  --background: #1a1514;  /* Dark chocolate brown */
+  --foreground: #e8e3df;  /* Light cream */
+  --secondary: #2d2421;  /* Medium chocolate */
+  --secondary-foreground: #e8e3df;
+  --muted: #3a332e;  /* Muted brown-grey */
+  --muted-foreground: #a39b94;  /* Grey-brown */
+  --accent: #8b7d6b;  /* Taupe accent */
+  --accent-foreground: #1a1514;
+  --border: #4a423c;  /* Dark grey-brown border */
+  --input: #2d2421;
+  --ring: #8b7d6b;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: #2d2421;
+  --primary-foreground: #e8e3df;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -28,7 +29,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
+  --radius: 0.375rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -37,37 +38,47 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Vintage-specific colors - chocolatey theme */
+  --vinyl-black: #1a1a1a;
+  --vinyl-label: #e8e3df;
+  --chrome: #9a8d7f;  /* Brownish chrome */
+  --gold: #c9a875;  /* Muted gold */
+  --wood: #4a423c;  /* Dark wood grey */
+  --player-bg: #3a332e;  /* Player background */
+  --vinyl-gradient: radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%);
 }
 
 .dark {
-  --background: #0f0f0f;
-  --foreground: #fafafa;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #fafafa;
-  --muted: #2a2a2a;
-  --muted-foreground: #a0a0a0;
-  --accent: #fbbf24;
-  --accent-foreground: #000000;
-  --border: #333333;
-  --input: #2a2a2a;
-  --ring: #fbbf24;
+  /* Chocolatey Greyish Dark Theme (same for dark mode) */
+  --background: #1a1514;
+  --foreground: #e8e3df;
+  --secondary: #2d2421;
+  --secondary-foreground: #e8e3df;
+  --muted: #3a332e;
+  --muted-foreground: #a39b94;
+  --accent: #8b7d6b;
+  --accent-foreground: #1a1514;
+  --border: #4a423c;
+  --input: #2d2421;
+  --ring: #8b7d6b;
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --primary: #2d2421;
+  --primary-foreground: #e8e3df;
+  --secondary: #2d2421;
+  --secondary-foreground: #e8e3df;
+  --muted: #3a332e;
+  --muted-foreground: #a39b94;
+  --accent: #8b7d6b;
+  --accent-foreground: #1a1514;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --border: #4a423c;
+  --input: #2d2421;
+  --ring: #8b7d6b;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -81,6 +92,15 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  
+  /* Vintage-specific colors - chocolatey theme */
+  --vinyl-black: #1a1a1a;
+  --vinyl-label: #e8e3df;
+  --chrome: #9a8d7f;
+  --gold: #c9a875;
+  --wood: #4a423c;
+  --player-bg: #3a332e;
+  --vinyl-gradient: radial-gradient(circle at center, #1a1a1a 30%, #2a2a2a 31%, #1a1a1a 32%, #2a2a2a 33%, #1a1a1a 34%, #2a2a2a 35%, #1a1a1a 70%, #0a0a0a 100%);
 }
 
 @theme inline {
@@ -203,12 +223,48 @@
   }
 }
 
+@keyframes vinyl-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tonearm-on {
+  from {
+    transform: rotate(-25deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes tonearm-off {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-25deg);
+  }
+}
+
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+.animate-vinyl {
+  animation: vinyl-spin 2s linear infinite;
+}
+
+.animate-tonearm-on {
+  animation: tonearm-on 0.5s ease-out forwards;
+}
+
+.animate-tonearm-off {
+  animation: tonearm-off 0.5s ease-out forwards;
 }
 
 /* Custom Scrollbar Styles */
