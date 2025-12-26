@@ -33,6 +33,147 @@ const getAllMusicSubreddits = () => {
   return subreddits
 }
 
+// Mock data for demonstration when API fails
+const getMockSongs = (): SongData[] => {
+  return [
+    {
+      id: "mock1",
+      title: "Tame Impala - The Less I Know The Better",
+      author: "TameImpalaMusic",
+      subreddit: "r/indieheads",
+      score: 4521,
+      youtubeId: "sBzrzS1Ag_g",
+      postUrl: "https://reddit.com/r/indieheads",
+    },
+    {
+      id: "mock2",
+      title: "Arctic Monkeys - Do I Wanna Know?",
+      author: "ArcticMonkeysVEVO",
+      subreddit: "r/indie_rock",
+      score: 3892,
+      youtubeId: "bpOSxM0rNPM",
+      postUrl: "https://reddit.com/r/indie_rock",
+    },
+    {
+      id: "mock3",
+      title: "Kendrick Lamar - HUMBLE.",
+      author: "KendrickLamarVEVO",
+      subreddit: "r/hiphopheads",
+      score: 5234,
+      youtubeId: "tvTRZJ-4EyI",
+      postUrl: "https://reddit.com/r/hiphopheads",
+    },
+    {
+      id: "mock4",
+      title: "Flume - Never Be Like You feat. Kai",
+      author: "FlumeAUS",
+      subreddit: "r/electronicmusic",
+      score: 2987,
+      youtubeId: "Ly7uj0JwgKg",
+      postUrl: "https://reddit.com/r/electronicmusic",
+    },
+    {
+      id: "mock5",
+      title: "ODESZA - A Moment Apart",
+      author: "ODESZA",
+      subreddit: "r/electronicmusic",
+      score: 3421,
+      youtubeId: "6t6Y-w-TT9Q",
+      postUrl: "https://reddit.com/r/electronicmusic",
+    },
+    {
+      id: "mock6",
+      title: "Mac DeMarco - Chamber of Reflection",
+      author: "MacDeMarcoVEVO",
+      subreddit: "r/listenothis",
+      score: 4123,
+      youtubeId: "NY8IS0ssnXQ",
+      postUrl: "https://reddit.com/r/listenothis",
+    },
+    {
+      id: "mock7",
+      title: "Anderson .Paak - Come Down",
+      author: "AndersonPaak",
+      subreddit: "r/hiphopheads",
+      score: 3654,
+      youtubeId: "ferZnZ0_rSM",
+      postUrl: "https://reddit.com/r/hiphopheads",
+    },
+    {
+      id: "mock8",
+      title: "Glass Animals - Heat Waves",
+      author: "GlassAnimalsVEVO",
+      subreddit: "r/indieheads",
+      score: 4890,
+      youtubeId: "mRD0-GxqHVo",
+      postUrl: "https://reddit.com/r/indieheads",
+    },
+    {
+      id: "mock9",
+      title: "The Strokes - Reptilia",
+      author: "TheStrokesVEVO",
+      subreddit: "r/indie_rock",
+      score: 5123,
+      youtubeId: "b8-tXG8KrWs",
+      postUrl: "https://reddit.com/r/indie_rock",
+    },
+    {
+      id: "mock10",
+      title: "Beach House - Space Song",
+      author: "BeachHouseBALT",
+      subreddit: "r/indieheads",
+      score: 3987,
+      youtubeId: "RBtlPT23PTM",
+      postUrl: "https://reddit.com/r/indieheads",
+    },
+    {
+      id: "mock11",
+      title: "Daft Punk - Get Lucky",
+      author: "DaftPunkVEVO",
+      subreddit: "r/electronicmusic",
+      score: 6543,
+      youtubeId: "5NV6Rdv1a3I",
+      postUrl: "https://reddit.com/r/electronicmusic",
+    },
+    {
+      id: "mock12",
+      title: "FKA twigs - Two Weeks",
+      author: "FKAtwigs",
+      subreddit: "r/popheads",
+      score: 2876,
+      youtubeId: "3yDP9MKVhZc",
+      postUrl: "https://reddit.com/r/popheads",
+    },
+    {
+      id: "mock13",
+      title: "Tyler, The Creator - EARFQUAKE",
+      author: "tylerthecreator",
+      subreddit: "r/hiphopheads",
+      score: 5432,
+      youtubeId: "HmAsUQEFYGI",
+      postUrl: "https://reddit.com/r/hiphopheads",
+    },
+    {
+      id: "mock14",
+      title: "MGMT - Electric Feel",
+      author: "MGMTVEVO",
+      subreddit: "r/indieheads",
+      score: 4234,
+      youtubeId: "MmZexg8sxyk",
+      postUrl: "https://reddit.com/r/indieheads",
+    },
+    {
+      id: "mock15",
+      title: "Bon Iver - Holocene",
+      author: "boniver",
+      subreddit: "r/indieheads",
+      score: 3765,
+      youtubeId: "TWcyIpul8OE",
+      postUrl: "https://reddit.com/r/indieheads",
+    },
+  ]
+}
+
 export function AppContainer() {
   const [currentSong, setCurrentSong] = useState<SongData | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -89,12 +230,19 @@ export function AppContainer() {
           allSongs.push(...songs)
         })
         
-        // Sort by score (popularity)
-        allSongs.sort((a, b) => b.score - a.score)
-        
-        setPlaylist(allSongs)
+        // If no songs were fetched (API failures), use mock data
+        if (allSongs.length === 0) {
+          console.log("Using mock data as fallback")
+          setPlaylist(getMockSongs())
+        } else {
+          // Sort by score (popularity)
+          allSongs.sort((a, b) => b.score - a.score)
+          setPlaylist(allSongs)
+        }
       } catch (error) {
         console.error("Error fetching songs:", error)
+        // Use mock data on error
+        setPlaylist(getMockSongs())
       } finally {
         setIsLoading(false)
       }
